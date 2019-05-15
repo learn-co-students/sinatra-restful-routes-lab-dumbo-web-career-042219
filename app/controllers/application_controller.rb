@@ -16,13 +16,14 @@ class ApplicationController < Sinatra::Base
     erb :new #show new receipes view
   end
 
+  #display a specific recipe
   get '/recipes/:id' do
     #gets params from url
     @recipe = Recipe.find(params[:id]) #define instance variable for view
-    # redirect "/recipes/#{@recipe.id}" #redirect back to specific receipes index page
     erb :show
   end
 
+  #create a new recipe
   post '/recipes' do
     #below works with properly formatted params in HTML form
     @recipe = Recipe.create(params) #create/save new receipe
